@@ -15,8 +15,12 @@ import { ChMenuHamburger } from '@kalimahapps/vue-icons'
 
       <ul class="linkList">
         <li class="linkItem"><RouterLink to="/jobs">Find Job</RouterLink></li>
-        <li class="linkItem"><RouterLink to="/companies">Companies</RouterLink></li>
-        <li class="linkItem"><RouterLink to="/for-employers">For Employers</RouterLink></li>
+        <li class="linkItem">
+          <RouterLink to="/companies">Companies</RouterLink>
+        </li>
+        <li class="linkItem">
+          <RouterLink to="/for-employers">For Employers</RouterLink>
+        </li>
         <li class="linkItem"><RouterLink to="/profile">Profile</RouterLink></li>
       </ul>
     </nav>
@@ -36,6 +40,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.linkList {
+  display: none;
 }
 
 .authBtns {
@@ -90,17 +98,18 @@ header {
     gap: 100px;
     font-weight: 500;
     font-size: 20px;
+    font-family: var(--second-family);
   }
 
-  nav a.router-link-active{
+  nav a.router-link-active {
     color: var(--accent);
   }
 
-  .linkItem{
+  .linkItem {
     transition: 0.3s color ease;
   }
 
-  .linkItem:hover{
+  .linkItem:hover {
     color: var(--accent);
   }
 
@@ -117,6 +126,7 @@ header {
     gap: 16px;
     font-size: 20px;
     font-weight: 600;
+    font-family: var(--font-family);
   }
 
   .loginLink {
