@@ -1,5 +1,32 @@
 <script setup lang="ts">
-import image from '../assets/images/hero-img.png'
+import { onBeforeUnmount, onMounted } from 'vue'
+import image from '../assets/images/home-image.webp'
+
+const desktopQuery = window.matchMedia('(min-width: 1440px)')
+let previousBodyOverflow = ''
+let previousHtmlOverflow = ''
+
+function updateScrollLock() {
+  document.body.style.overflow = desktopQuery.matches
+    ? 'hidden'
+    : previousBodyOverflow
+  document.documentElement.style.overflow = desktopQuery.matches
+    ? 'hidden'
+    : previousHtmlOverflow
+}
+
+onMounted(() => {
+  previousBodyOverflow = document.body.style.overflow
+  previousHtmlOverflow = document.documentElement.style.overflow
+  updateScrollLock()
+  desktopQuery.addEventListener('change', updateScrollLock)
+})
+
+onBeforeUnmount(() => {
+  desktopQuery.removeEventListener('change', updateScrollLock)
+  document.body.style.overflow = previousBodyOverflow
+  document.documentElement.style.overflow = previousHtmlOverflow
+})
 </script>
 
 <template>
@@ -19,7 +46,7 @@ import image from '../assets/images/hero-img.png'
 
 <style scoped>
 .container {
-  padding: 8px;
+  padding: 24px 0px;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -27,6 +54,9 @@ import image from '../assets/images/hero-img.png'
 
 img {
   margin: 0 auto;
+  height: 300px;
+  width: 360px;
+  object-fit: cover;
 }
 
 .textContent {
@@ -83,19 +113,44 @@ p {
     padding: 8px 64px;
     font-size: 40px;
   }
+
+  img {
+    width: 600px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .container {
     flex-direction: row-reverse;
+    padding: 8px 124px;
   }
 
-  img{
+  img {
     width: 1200px;
+    height: 842px;
   }
 
-  h1{
-    margin-top: 140px;
+  h1 {
+    margin-top: 220px;
+    font-size: 80px;
+  }
+
+  .textContent {
+    text-align: left;
+  }
+
+  .getHiredBtn {
+    padding: 8px 80px;
+    font-size: 52px;
+    border: 2px solid var(--main-color);
+    transition:
+      0.3s color ease,
+      0.3s background-color ease;
+  }
+
+  .getHiredBtn:hover {
+    background-color: var(--second-color);
+    color: var(--main-color);
   }
 }
 </style>
