@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { jobs } from '../data/jobs.ts'
-import { AkLocation, BsBriefcase } from '@kalimahapps/vue-icons'
+import {
+  AkLocation,
+  BsBriefcase,
+  ReHomeOfficeLine,
+} from '@kalimahapps/vue-icons'
 </script>
 
 <template>
@@ -11,7 +15,9 @@ import { AkLocation, BsBriefcase } from '@kalimahapps/vue-icons'
         <h2 class="jobTitle">{{ job.position }}</h2>
 
         <p class="info">
-          <AkLocation /> {{ job.jobType }} · <BsBriefcase /> {{ job.industry }}
+          <span class="infoItem"><AkLocation />{{ job.jobType }} ·</span>
+          <span class="infoItem"><BsBriefcase />{{ job.industry }} ·</span>
+          <span class="infoItem"><ReHomeOfficeLine />{{ job.company }}</span>
         </p>
 
         <p class="salary">
@@ -53,11 +59,19 @@ import { AkLocation, BsBriefcase } from '@kalimahapps/vue-icons'
 
 .info {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 4px;
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 4px;
+}
+
+.infoItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
 }
 
 .jobsList {
@@ -111,7 +125,7 @@ import { AkLocation, BsBriefcase } from '@kalimahapps/vue-icons'
 }
 
 .accent {
-  color: #168300;
+  color: var(--salary);
   font-weight: 600;
   font-size: 18px;
 }
@@ -176,17 +190,19 @@ import { AkLocation, BsBriefcase } from '@kalimahapps/vue-icons'
   }
 }
 
-@media screen and (min-width: 1440px){
+@media screen and (min-width: 1440px) {
   .container {
     padding: 12px 200px;
   }
 
-  .moreLink{
-    transition: 0.3s padding ease, 0.3s font-size ease;
+  .moreLink {
+    transition:
+      0.3s padding ease,
+      0.3s font-size ease;
     font-size: 40px;
   }
 
-  .moreLink:hover{
+  .moreLink:hover {
     padding: 10px 100px;
     font-size: 48px;
   }

@@ -103,6 +103,17 @@ header {
 
   nav a.router-link-active {
     color: var(--accent);
+    position: relative;
+  }
+
+  nav a.router-link-active::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -34px;
+    left: 0;
+    height: 5px;
+    background-color: currentColor;
   }
 
   .linkItem {
