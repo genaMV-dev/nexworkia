@@ -123,7 +123,7 @@ const job = computed(() => {
   color: var(--second-color);
   font-weight: 700;
   padding: 4px 10px;
-  border-radius: 16px;
+  border-radius: 48px;
 }
 
 .applyBtn :deep(svg) {
@@ -363,7 +363,7 @@ img {
 
   .applyBtn {
     gap: 12px;
-    padding: 8px 32px;
+    padding: 12px 32px;
     font-size: 24px;
   }
 
@@ -440,6 +440,18 @@ img {
     flex-basis: 32px;
     width: 32px;
     height: 32px;
+  }
+
+  .applyBtn {
+    padding: 16px 48px;
+    transition:
+      0.3s color ease,
+      0.3s background-color ease;
+  }
+
+  .applyBtn:hover {
+    background-color: var(--second-color);
+    color: var(--main-color);
   }
 }
 </style>

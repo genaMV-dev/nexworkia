@@ -134,7 +134,7 @@ import {
   padding: 8px 28px;
   background-color: var(--main-color);
   border: 2px solid var(--main-color);
-  border-radius: 16px;
+  border-radius: 48px;
   color: var(--second-color);
   font-size: 18px;
   font-weight: 600;

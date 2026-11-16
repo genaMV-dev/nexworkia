@@ -143,7 +143,7 @@ header {
   .loginLink {
     padding: 12px 32px;
     border: 2px solid var(--second-color);
-    border-radius: 24px;
+    border-radius: 48px;
     transition:
       0.3s border ease,
       0.3s color ease;
@@ -159,7 +159,7 @@ header {
     border: 2px solid var(--second-color);
     background-color: var(--second-color);
     color: var(--third-color);
-    border-radius: 24px;
+    border-radius: 48px;
     transition:
       0.3s border ease,
       0.3s background-color ease;

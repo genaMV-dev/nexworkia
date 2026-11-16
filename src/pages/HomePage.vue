@@ -94,7 +94,7 @@ p {
   background-color: var(--main-color);
   font-size: 32px;
   font-weight: 700;
-  border-radius: 24px;
+  border-radius: 48px;
   color: var(--second-color);
 }
 
