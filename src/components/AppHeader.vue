@@ -1,5 +1,47 @@
 <script setup lang="ts">
 import { ChMenuHamburger } from '@kalimahapps/vue-icons'
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import BurgerMenu from '../components/BurgerMenu.vue'
+
+const burgerMenuIsOpen = ref<boolean>(false)
+const burgerButtonRef = ref<HTMLButtonElement | null>(null)
+const burgerMenuRef = ref<InstanceType<typeof BurgerMenu> | null>(null)
+const route = useRoute()
+
+function openToggler() {
+  burgerMenuIsOpen.value = !burgerMenuIsOpen.value
+}
+
+function closeOnOutsideClick(event: PointerEvent) {
+  const target = event.target
+  if (!(target instanceof Node)) return
+
+  const menuElement = burgerMenuRef.value?.$el
+  if (
+    (menuElement instanceof HTMLElement && menuElement.contains(target)) ||
+    burgerButtonRef.value?.contains(target)
+  ) {
+    return
+  }
+
+  burgerMenuIsOpen.value = false
+}
+
+watch(
+  () => route.fullPath,
+  () => {
+    burgerMenuIsOpen.value = false
+  },
+)
+
+onMounted(() => {
+  document.addEventListener('pointerdown', closeOnOutsideClick)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('pointerdown', closeOnOutsideClick)
+})
 </script>
 
 <template>
@@ -9,7 +51,7 @@ import { ChMenuHamburger } from '@kalimahapps/vue-icons'
     </div>
 
     <nav>
-      <button class="burgerBtn">
+      <button ref="burgerButtonRef" @click="openToggler" class="burgerBtn">
         <ChMenuHamburger />
       </button>
 
@@ -30,9 +72,26 @@ import { ChMenuHamburger } from '@kalimahapps/vue-icons'
       <RouterLink class="registerLink" to="/register">Sign Up</RouterLink>
     </div>
   </header>
+
+  <Transition name="burger">
+    <BurgerMenu ref="burgerMenuRef" v-if="burgerMenuIsOpen" />
+  </Transition>
 </template>
 
 <style scoped>
+.burger-enter-active,
+.burger-leave-active {
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.burger-enter-from,
+.burger-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
 header {
   padding: 16px;
   background-color: var(--main-color);
