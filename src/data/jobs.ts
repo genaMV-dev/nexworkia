@@ -1,4 +1,4 @@
-interface jobsInterface {
+interface Jobs {
   id: number
   position: string
   skills: string[]
@@ -13,7 +13,7 @@ interface jobsInterface {
   companyDescription: string
 }
 
-export const jobs: jobsInterface[] = [
+export const jobs: Jobs[] = [
   // --- 3 IT ---
   {
     id: 1,
