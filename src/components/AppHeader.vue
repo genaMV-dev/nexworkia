@@ -1,38 +1,60 @@
 <script setup lang="ts">
-import { ChMenuHamburger } from '@kalimahapps/vue-icons'
+import { ChMenuHamburger, AkChevronDownSmall } from '@kalimahapps/vue-icons'
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import BurgerMenu from '../components/BurgerMenu.vue'
+import ForEmployersMenu from '../components/ForEmployersMenu.vue'
+import { user } from '../data/user.ts'
 
 const burgerMenuIsOpen = ref<boolean>(false)
 const burgerButtonRef = ref<HTMLButtonElement | null>(null)
 const burgerMenuRef = ref<InstanceType<typeof BurgerMenu> | null>(null)
+const forEmployersMenuIsOpen = ref<boolean>(false)
+const forEmployersButtonRef = ref<HTMLButtonElement | null>(null)
+const forEmployersMenuRef = ref<InstanceType<typeof ForEmployersMenu> | null>(null)
 const route = useRoute()
 
 function openToggler() {
   burgerMenuIsOpen.value = !burgerMenuIsOpen.value
 }
 
+function toggleForEmployersMenu() {
+  forEmployersMenuIsOpen.value = !forEmployersMenuIsOpen.value
+}
+
 function closeOnOutsideClick(event: PointerEvent) {
   const target = event.target
   if (!(target instanceof Node)) return
 
-  const menuElement = burgerMenuRef.value?.$el
+  const burgerMenuElement = burgerMenuRef.value?.$el
   if (
-    (menuElement instanceof HTMLElement && menuElement.contains(target)) ||
+    (burgerMenuElement instanceof HTMLElement &&
+      burgerMenuElement.contains(target)) ||
     burgerButtonRef.value?.contains(target)
+  ) {
+    // Click is inside the burger menu; the employer submenu is unrelated.
+  } else {
+    burgerMenuIsOpen.value = false
+  }
+
+  const forEmployersMenuElement = forEmployersMenuRef.value?.$el
+  if (
+    (forEmployersMenuElement instanceof HTMLElement &&
+      forEmployersMenuElement.contains(target)) ||
+    forEmployersButtonRef.value?.contains(target)
   ) {
     return
   }
 
-  burgerMenuIsOpen.value = false
+  forEmployersMenuIsOpen.value = false
 }
 
 watch(
   () => route.fullPath,
   () => {
     burgerMenuIsOpen.value = false
-  },
+    forEmployersMenuIsOpen.value = false
+  }
 )
 
 onMounted(() => {
@@ -60,8 +82,28 @@ onBeforeUnmount(() => {
         <li class="linkItem">
           <RouterLink to="/companies">Companies</RouterLink>
         </li>
-        <li class="linkItem">
-          <RouterLink to="/for-employers">For Employers</RouterLink>
+        <li v-if="user.role === 'employer'" class="linkItem forEmployersItem">
+          <button
+            ref="forEmployersButtonRef"
+            class="forEmployersBtn"
+            type="button"
+            :aria-expanded="forEmployersMenuIsOpen"
+            @click="toggleForEmployersMenu"
+          >
+            For Employers
+            <span
+              class="forEmployersChevron"
+              :class="{ 'is-open': forEmployersMenuIsOpen }"
+            >
+              <AkChevronDownSmall />
+            </span>
+          </button>
+          <Transition name="employers">
+            <ForEmployersMenu
+              v-if="forEmployersMenuIsOpen"
+              ref="forEmployersMenuRef"
+            />
+          </Transition>
         </li>
         <li class="linkItem"><RouterLink to="/profile">Profile</RouterLink></li>
       </ul>
@@ -88,6 +130,19 @@ onBeforeUnmount(() => {
 
 .burger-enter-from,
 .burger-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.employers-enter-active,
+.employers-leave-active {
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.employers-enter-from,
+.employers-leave-to {
   opacity: 0;
   transform: translateY(-8px);
 }
@@ -175,11 +230,11 @@ header {
     background-color: currentColor;
   }
 
-  .linkItem {
+  .linkItem a, .linkItem button {
     transition: 0.3s color ease;
   }
 
-  .linkItem:hover {
+  .linkItem a:hover, .linkItem button:hover {
     color: var(--accent);
   }
 
@@ -227,6 +282,25 @@ header {
   .registerLink:hover {
     border: 2px solid var(--accent);
     background-color: var(--accent);
+  }
+
+  .forEmployersBtn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .forEmployersChevron {
+    display: inline-flex;
+    transition: transform 0.3s ease;
+  }
+
+  .forEmployersChevron.is-open {
+    transform: rotate(180deg);
+  }
+
+  .forEmployersItem{
+    position: relative;
   }
 }
 </style>

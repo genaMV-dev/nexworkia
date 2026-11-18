@@ -1,4 +1,5 @@
 type WorkFormat = 'remote' | 'hybrid' | 'on-site'
+type Role = 'employee' | 'employer'
 
 interface User {
   id: number
@@ -14,6 +15,7 @@ interface User {
   expectedSalary: number
   position: string
   workFormat: WorkFormat
+  role: Role
   createdAt: string
 }
 
@@ -31,5 +33,6 @@ export const user: User = {
   expectedSalary: 3500,
   position: 'Frontend Developer',
   workFormat: 'remote',
+  role: 'employer',
   createdAt: '2026-11-16T12:00:00Z',
 }

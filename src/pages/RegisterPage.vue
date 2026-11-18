@@ -7,6 +7,30 @@
       <p class="subtitle">Join Nexworkia and find your next opportunity.</p>
 
       <form class="registerForm" @submit.prevent>
+        <fieldset class="accountType">
+          <legend>I am registering as</legend>
+          <div class="accountTypeOptions">
+            <label class="accountTypeOption">
+              <input
+                type="radio"
+                name="accountType"
+                value="employee"
+                required
+              />
+              <span>Employee</span>
+            </label>
+            <label class="accountTypeOption">
+              <input
+                type="radio"
+                name="accountType"
+                value="employer"
+                required
+              />
+              <span>Employer</span>
+            </label>
+          </div>
+        </fieldset>
+
         <div class="nameFields">
           <label class="field">
             <span>First name</span>
@@ -123,6 +147,41 @@ h1 {
 .field input:focus {
   border-color: var(--main-color);
   outline: 2px solid rgb(134 0 83 / 20%);
+}
+
+.accountType {
+  min-width: 0;
+  border: 0;
+}
+
+.accountType legend {
+  margin-bottom: 6px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.accountTypeOptions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.accountTypeOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid #24244259;
+  border-radius: 12px;
+  background-color: white;
+  font-family: var(--second-family);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.accountTypeOption input {
+  accent-color: var(--main-color);
 }
 
 .registerButton {
