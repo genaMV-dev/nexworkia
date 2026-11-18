@@ -7,6 +7,8 @@ import ProfilePage from '@/pages/ProfilePage.vue'
 import ReviewsPage from '@/pages/ReviewsPage.vue'
 import NotFoundPage from '@/pages/NotFoundPage.vue'
 import CompaniesPage from '@/pages/CompaniesPage.vue'
+import LoginPage from '@/pages/LoginPage.vue'
+import RegisterPage from '@/pages/RegisterPage.vue'
 
 const routes = [
   {
@@ -29,6 +31,14 @@ const routes = [
   {
     path: '/companies',
     component: CompaniesPage,
+  },
+  {
+    path: '/login',
+    component: LoginPage,
+  },
+  {
+    path: '/register',
+    component: RegisterPage,
   },
   {
     path: '/profile',
