@@ -10,7 +10,7 @@ import { AkCirclePlus, ClUsers } from '@kalimahapps/vue-icons'
           <RouterLink to="/post-job"><AkCirclePlus />Post a job</RouterLink>
         </li>
         <li class="linkItem">
-          <RouterLink to="/find-empoyees"><ClUsers />Find Candidates</RouterLink>
+          <RouterLink to="/find-employees"><ClUsers />Find Candidates</RouterLink>
         </li>
       </ul>
     </nav>

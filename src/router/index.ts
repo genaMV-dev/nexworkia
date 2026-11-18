@@ -2,13 +2,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/pages/HomePage.vue'
 import JobsPage from '@/pages/JobsPage.vue'
 import JobPage from '@/pages/JobPage.vue'
-import ForEmployersPage from '@/pages/ForEmployersPage.vue'
+import PostJobPage from '@/pages/PostJobPage.vue'
 import ProfilePage from '@/pages/ProfilePage.vue'
 import ReviewsPage from '@/pages/ReviewsPage.vue'
 import NotFoundPage from '@/pages/NotFoundPage.vue'
 import CompaniesPage from '@/pages/CompaniesPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 import RegisterPage from '@/pages/RegisterPage.vue'
+import FindEmployees from '@/pages/FindEmployees.vue'
 
 const routes = [
   {
@@ -25,8 +26,12 @@ const routes = [
     component: JobPage,
   },
   {
-    path: '/for-employers',
-    component: ForEmployersPage,
+    path: '/post-job',
+    component: PostJobPage,
+  },
+  {
+    path: '/find-employees',
+    component: FindEmployees,
   },
   {
     path: '/companies',
