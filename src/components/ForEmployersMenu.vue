@@ -45,5 +45,10 @@ nav a.router-link-active {
   display: flex;
   gap: 8px;
   align-items: center;
+  transition: 0.3s color ease;
+}
+
+.linkItem a:hover {
+  color: var(--accent);
 }
 </style>
