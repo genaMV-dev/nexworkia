@@ -69,48 +69,52 @@ const formatDate = (date: string) =>
       </div>
     </div>
 
-    <div class="skills">
-      <div class="titleSkill">
-        <CaSkillLevel />
-        <h2>Skills</h2>
+    <div class="skillsLanguagesWrapper">
+      <div class="skills">
+        <div class="titleSkill">
+          <CaSkillLevel />
+          <h2>Skills</h2>
+        </div>
+        <ul class="skillList">
+          <li class="skillItem" :key="skill" v-for="skill in user.skills">
+            <p>{{ skill }}</p>
+          </li>
+        </ul>
       </div>
-      <ul class="skillList">
-        <li class="skillItem" :key="skill" v-for="skill in user.skills">
-          <p>{{ skill }}</p>
-        </li>
-      </ul>
+
+      <div class="languages">
+        <div class="titleLanguage">
+          <AkGlobe />
+          <h2>Languages</h2>
+        </div>
+        <ul class="languageList">
+          <li
+            class="languageItem"
+            :key="language"
+            v-for="language in user.languages"
+          >
+            <p>{{ language }}</p>
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <div class="languages">
-      <div class="titleLanguage">
-        <AkGlobe />
-        <h2>Languages</h2>
+    <div class="experienceEducationWrapper">
+      <div class="experience">
+        <div class="titleExperience">
+          <BsBriefcase />
+          <h2>Experience</h2>
+        </div>
+        <p>{{ user.experience }} years</p>
       </div>
-      <ul class="languageList">
-        <li
-          class="languageItem"
-          :key="language"
-          v-for="language in user.languages"
-        >
-          <p>{{ language }}</p>
-        </li>
-      </ul>
-    </div>
 
-    <div class="experience">
-      <div class="titleExperience">
-        <BsBriefcase />
-        <h2>Experience</h2>
+      <div class="education">
+        <div class="titleEducation">
+          <CoEducation />
+          <h2>Education</h2>
+        </div>
+        <p>{{ user.education }}</p>
       </div>
-      <p>{{ user.experience }} years</p>
-    </div>
-
-    <div class="education">
-      <div class="titleEducation">
-        <CoEducation />
-        <h2>Education</h2>
-      </div>
-      <p>{{ user.education }}</p>
     </div>
 
     <div class="resume">
@@ -139,7 +143,12 @@ const formatDate = (date: string) =>
   margin-bottom: 16px;
 }
 
-.container > div {
+.info,
+.skills,
+.languages,
+.education,
+.experience,
+.resume {
   padding: 8px;
   background-color: var(--second-color);
   border-radius: 16px;
@@ -396,7 +405,12 @@ const formatDate = (date: string) =>
     font-size: 20px;
   }
 
-  .container > div {
+  .info,
+  .skills,
+  .languages,
+  .education,
+  .experience,
+  .resume {
     padding: 8px 24px;
   }
 
@@ -450,6 +464,64 @@ const formatDate = (date: string) =>
 @media screen and (min-width: 1440px) {
   .container {
     padding: 12px 200px;
+  }
+
+  .skillsLanguagesWrapper {
+    display: flex;
+    gap: 32px;
+  }
+
+  .skills {
+    width: 65%;
+  }
+
+  .skillList {
+    gap: 24px;
+  }
+
+  .skillItem {
+    padding: 8px 28px;
+  }
+
+  .languages {
+    width: 35%;
+  }
+
+  .languageList {
+    gap: 24px;
+  }
+
+  .languageItem {
+    padding: 8px 28px;
+  }
+
+  .experienceEducationWrapper {
+    display: flex;
+    gap: 32px;
+  }
+
+  .experience {
+    width: 65%;
+  }
+
+  .education {
+    width: 35%;
+  }
+
+  .resume {
+    margin: 0 auto;
+  }
+
+  .editLink {
+    transition:
+      0.3s color ease,
+      0.3s background-color ease;
+    border: 2px solid var(--main-color);
+  }
+
+  .editLink:hover {
+    background-color: white;
+    color: var(--main-color);
   }
 }
 </style>
