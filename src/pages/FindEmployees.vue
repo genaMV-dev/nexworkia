@@ -47,8 +47,6 @@ const appliedFilters = ref<CandidateFilters>({
 const searchQuery = ref('')
 const filtersAreOpen = ref(false)
 
-
-
 function clearFilters() {
   filters.position = ''
   filters.industry = 'all'
@@ -234,7 +232,7 @@ const filteredEmployees = computed(() => {
             <McFilter2Fill />
             Filters
           </button>
-          <FilterCandidatesMenu v-if="filtersAreOpen" />
+          <FilterCandidatesMenu v-show="filtersAreOpen" @apply="applyFilters" />
         </div>
 
         <ul class="candidateList">
