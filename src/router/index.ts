@@ -10,6 +10,7 @@ import CompaniesPage from '@/pages/CompaniesPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 import RegisterPage from '@/pages/RegisterPage.vue'
 import FindEmployees from '@/pages/FindEmployees.vue'
+import EmployeePage from '@/pages/EmployeePage.vue'
 
 const routes = [
   {
@@ -32,6 +33,10 @@ const routes = [
   {
     path: '/find-employees',
     component: FindEmployees,
+  },
+  {
+    path: '/find-employees/:id',
+    component: EmployeePage,
   },
   {
     path: '/companies',
