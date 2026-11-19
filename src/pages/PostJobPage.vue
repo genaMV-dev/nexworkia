@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import {
-  AnOutlinedArrowRight,
+  AnOutlinedArrowLeft,
   BsBriefcase,
   CaSkillLevel,
   BsListCheck,
@@ -27,7 +27,10 @@ const workType = ref('Hybrid')
 
 function addSkill() {
   const skill = skillDraft.value.trim()
-  if (!skill || skills.value.some((item) => item.toLowerCase() === skill.toLowerCase())) {
+  if (
+    !skill ||
+    skills.value.some((item) => item.toLowerCase() === skill.toLowerCase())
+  ) {
     return
   }
 
@@ -41,7 +44,7 @@ function addRequirement() {
   if (
     !requirement ||
     requirements.value.some(
-      (item) => item.toLowerCase() === requirement.toLowerCase(),
+      (item) => item.toLowerCase() === requirement.toLowerCase()
     )
   ) {
     return
@@ -64,7 +67,7 @@ function removeRequirement(index: number) {
 <template>
   <main class="postJobPage">
     <RouterLink class="backLink" to="/find-employees">
-      <AnOutlinedArrowRight class="backIcon" />
+      <AnOutlinedArrowLeft />
       Find Candidates
     </RouterLink>
 
@@ -96,7 +99,11 @@ function removeRequirement(index: number) {
           <h2 class="fieldTitle"><CaSkillLevel />Skills *</h2>
           <p class="fieldHint">Add the skills required for this position.</p>
           <ul class="chipList">
-            <li v-for="(skill, index) in skills" :key="`${skill}-${index}`" class="chip">
+            <li
+              v-for="(skill, index) in skills"
+              :key="`${skill}-${index}`"
+              class="chip"
+            >
               <span>{{ skill }}</span>
               <button
                 type="button"
@@ -168,11 +175,7 @@ function removeRequirement(index: number) {
               placeholder="Enter a requirement"
               @keydown.enter.prevent="addRequirement"
             />
-            <button
-              class="addButton"
-              type="button"
-              @click="addRequirement"
-            >
+            <button class="addButton" type="button" @click="addRequirement">
               Add
             </button>
           </div>
@@ -210,7 +213,9 @@ function removeRequirement(index: number) {
         </label>
 
         <label class="formField">
-          <span class="fieldTitle"><TaOutlineBuildingSkyscraper />Industry *</span>
+          <span class="fieldTitle"
+            ><TaOutlineBuildingSkyscraper />Industry *</span
+          >
           <input
             class="textControl"
             type="text"
@@ -302,9 +307,9 @@ function removeRequirement(index: number) {
 <style scoped>
 .postJobPage {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 16px 16px 40px;
+  padding: 12px 8px 32px;
   color: var(--third-color);
 }
 
@@ -314,10 +319,6 @@ function removeRequirement(index: number) {
   gap: 8px;
   margin-bottom: 16px;
   color: #4d4d4d;
-}
-
-.backIcon {
-  transform: rotate(180deg);
 }
 
 .postJobCard {
@@ -668,7 +669,9 @@ h1 {
   .submitButton {
     cursor: pointer;
     border: 2px solid var(--main-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   .submitButton:hover {

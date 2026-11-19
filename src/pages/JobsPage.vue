@@ -100,13 +100,14 @@ import {
   padding: 4px;
   border: 1px solid var(--third-color);
   border-radius: 16px;
+  background-color: rgb(255 255 255 / 55%);
   white-space: nowrap;
   font-size: 16px;
   font-weight: 400;
 }
 
 .skillMore {
-  padding: 0 4px;
+  padding: 4px;
   font-size: 16px;
   font-weight: 400;
 }

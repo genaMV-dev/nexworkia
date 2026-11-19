@@ -13,6 +13,7 @@ import {
   McFilter2Fill,
   AnOutlinedSearch,
   BsBriefcase,
+  AnOutlinedArrowLeft,
 } from '@kalimahapps/vue-icons'
 
 const industryOptions = [
@@ -116,7 +117,7 @@ const filteredEmployees = computed(() => {
 <template>
   <main class="findEmployeesPage">
     <RouterLink class="backLink" to="/post-job">
-      <span aria-hidden="true">‹</span>
+      <AnOutlinedArrowLeft />
       Post a Job
     </RouterLink>
 
@@ -306,10 +307,8 @@ const filteredEmployees = computed(() => {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   color: #4d4d4d;
-  font-size: 14px;
-  font-weight: 700;
 }
 
 .backLink span {

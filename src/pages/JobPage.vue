@@ -303,6 +303,7 @@ img {
   white-space: nowrap;
   font-size: 16px;
   font-weight: 400;
+  background-color: rgb(255 255 255 / 55%);
 }
 
 .aboutPosition {
