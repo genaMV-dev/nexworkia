@@ -6,11 +6,11 @@ import PostJobPage from '@/pages/PostJobPage.vue'
 import ProfilePage from '@/pages/ProfilePage.vue'
 import ReviewsPage from '@/pages/ReviewsPage.vue'
 import NotFoundPage from '@/pages/NotFoundPage.vue'
-import CompaniesPage from '@/pages/CompaniesPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 import RegisterPage from '@/pages/RegisterPage.vue'
 import FindEmployees from '@/pages/FindEmployees.vue'
 import EmployeePage from '@/pages/EmployeePage.vue'
+import AboutPage from '@/pages/AboutPage.vue'
 
 const routes = [
   {
@@ -39,8 +39,8 @@ const routes = [
     component: EmployeePage,
   },
   {
-    path: '/companies',
-    component: CompaniesPage,
+    path: '/about',
+    component: AboutPage,
   },
   {
     path: '/login',

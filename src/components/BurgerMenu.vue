@@ -6,12 +6,20 @@
       <ul class="linkList">
         <li class="linkItem"><RouterLink to="/jobs">Find Job</RouterLink></li>
         <li class="linkItem">
-          <RouterLink to="/companies">Companies</RouterLink>
-        </li>
-        <li class="linkItem">
           <RouterLink to="/for-employers">For Employers</RouterLink>
         </li>
         <li class="linkItem"><RouterLink to="/profile">Profile</RouterLink></li>
+        <li class="linkItem">
+          <RouterLink to="/post-job">Post a job</RouterLink>
+        </li>
+        <li class="linkItem">
+          <RouterLink to="/find-employees"
+            >Find Candidates</RouterLink
+          >
+        </li>
+        <li class="linkItem">
+          <RouterLink to="/companies">Companies</RouterLink>
+        </li>
       </ul>
     </nav>
   </div>

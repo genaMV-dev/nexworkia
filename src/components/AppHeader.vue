@@ -79,9 +79,6 @@ onBeforeUnmount(() => {
 
       <ul class="linkList">
         <li class="linkItem"><RouterLink to="/jobs">Find Job</RouterLink></li>
-        <li class="linkItem">
-          <RouterLink to="/companies">Companies</RouterLink>
-        </li>
         <li v-if="user.role === 'employer'" class="linkItem forEmployersItem">
           <button
             ref="forEmployersButtonRef"
@@ -106,6 +103,9 @@ onBeforeUnmount(() => {
           </Transition>
         </li>
         <li class="linkItem"><RouterLink to="/profile">Profile</RouterLink></li>
+        <li class="linkItem">
+          <RouterLink to="/about">About</RouterLink>
+        </li>
       </ul>
     </nav>
 
